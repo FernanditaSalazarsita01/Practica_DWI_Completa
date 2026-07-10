@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Permite utilizar caracteres especiales como acentos y la letra ñ -->
+  <meta charset="UTF-8" />
+
+  <!-- Hace que la página se adapte correctamente a celulares y tabletas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Descripción general de la página para buscadores -->
+  <meta
+    name="description"
+    content="Práctica de laboratorio DWI con herramientas desarrolladas en JavaScript."
+  />
+
+  <!-- Texto que aparece en la pestaña del navegador -->
+  <title>Laboratorio DWI | Fernanda Guadalupe Salazar Sánchez</title>
+
+  <!-- Conexión previa con Google Fonts para cargar la fuente más rápido -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!-- Permite descargar los archivos de fuente desde Google -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Importa la fuente Inter en diferentes tamaños y grosores -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Enlaza el archivo donde se encuentran los estilos CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+
+  <!-- Encabezado principal de la página -->
+  <header class="site-header">
+
+    <!-- Contenedor de la barra de navegación -->
+    <div class="container navbar">
+
+      <!-- Logotipo o nombre del sitio -->
+      <!-- Al hacer clic dirige a la sección de inicio -->
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+
+        <!-- Iniciales que funcionan como ícono del sitio -->
+        <span class="brand-icon">FG</span>
+
+        <!-- Nombre de la aplicación -->
+        <span>Laboratorio DWI</span>
+      </a>
+
+      <!-- Botón para mostrar el menú en dispositivos móviles -->
+      <button
+        id="menuButton"
+        class="menu-button"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mainNav"
+      >
+        <!-- Estas líneas forman el ícono del menú hamburguesa -->
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Menú principal de navegación -->
+      <nav
+        id="mainNav"
+        class="main-nav"
+        aria-label="Navegación principal"
+      >
+        <!-- Cada enlace dirige a una sección específica de la página -->
+        <a
+          class="nav-link active"
+          href="#inicio"
+          data-section="inicio"
+        >
+          Inicio
+        </a>
+
+        <a
+          class="nav-link"
+          href="#edad"
+          data-section="edad"
+        >
+          Edad
+        </a>
+
+        <a
+          class="nav-link"
+          href="#temperatura"
+          data-section="temperatura"
+        >
+          Temperatura
+        </a>
+
+        <a
+          class="nav-link"
+          href="#tareas"
+          data-section="tareas"
+        >
+          Tareas
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido principal de la página -->
+  <main>
+
+    <!-- Sección principal o de bienvenida -->
+    <section
+      id="inicio"
+      class="section hero active-section"
+    >
+      <div class="container">
+
+        <!-- Título principal de la página -->
+        <div class="hero-content">
+
+          <!-- Nombre de la persona que elaboró la práctica -->
+          <span class="eyebrow">
+            Elaborado por: Fernanda Guadalupe Salazar Sánchez
+          </span>
+
+          <!-- Encabezado principal -->
+          <h1>Herramientas básicas con JavaScript</h1>
+        </div>
+
+        <!-- Contenedor de las tarjetas de proyectos -->
+        <div id="herramientas" class="cards-grid">
+
+          <!-- Tarjeta del proyecto 1 -->
+          <article class="feature-card pink-card">
+
+            <!-- Número o nombre del proyecto -->
+            <span class="feature-number">Proyecto 1</span>
+
+            <!-- Nombre de la herramienta -->
+            <h2>Calculadora de edad</h2>
+
+            <!-- Descripción de la herramienta -->
+            <p>
+              Calcula los años y meses transcurridos desde una fecha de nacimiento.
+            </p>
+
+            <!-- Enlace directo a la sección de edad -->
+            <a href="#edad">Abrir herramienta</a>
+          </article>
+
+          <!-- Tarjeta del proyecto 2 -->
+          <article class="feature-card blue-card">
+
+            <span class="feature-number">Proyecto 2</span>
+
+            <h2>Convertidor de temperatura</h2>
+
+            <p>
+              Convierte valores entre Celsius, Fahrenheit y Kelvin.
+            </p>
+
+            <!-- Enlace directo a la sección de temperatura -->
+            <a href="#temperatura">Abrir herramienta</a>
+          </article>
+
+          <!-- Tarjeta del proyecto 3 -->
+          <article class="feature-card purple-card">
+
+            <span class="feature-number">Proyecto 3</span>
+
+            <h2>Gestor de tareas</h2>
+
+            <p>
+              Permite agregar, completar, reactivar y eliminar actividades.
+            </p>
+
+            <!-- Enlace directo a la sección de tareas -->
+            <a href="#tareas">Abrir herramienta</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- PROYECTO 1: CALCULADORA DE EDAD                       -->
+    <!-- ===================================================== -->
+
+    <section id="edad" class="section tool-section">
+
+      <!-- Contenedor de la herramienta -->
+      <div class="container tool-layout">
+
+        <!-- Encabezado de la sección -->
+        <div class="section-heading">
+
+          <span class="eyebrow">Proyecto de clase No. 1</span>
+
+          <h2>Calculadora de edad</h2>
+
+          <p>
+            Selecciona tu fecha de nacimiento para calcular tu edad.
+          </p>
+        </div>
+
+        <!-- Tarjeta que contiene el formulario -->
+        <div class="tool-card">
+
+          <!-- Formulario de la calculadora de edad -->
+          <!-- El identificador ageForm permite encontrarlo desde JavaScript -->
+          <!-- novalidate desactiva los mensajes automáticos del navegador -->
+          <form id="ageForm" novalidate>
+
+            <!-- Agrupa los campos relacionados con la fecha -->
+            <fieldset>
+
+              <!-- Título del grupo de campos -->
+              <legend>Fecha de nacimiento</legend>
+
+              <!-- Contenedor de año, mes y día -->
+              <div class="date-grid">
+
+                <!-- Campo para seleccionar el año -->
+                <div class="field">
+
+                  <!-- El atributo for relaciona la etiqueta con el select -->
+                  <label for="birthYear">Año</label>
+
+                  <!-- JavaScript agregará las opciones de los años -->
+                  <select id="birthYear" required>
+                    <option value="">Año</option>
+                  </select>
+                </div>
+
+                <!-- Campo para seleccionar el mes -->
+                <div class="field">
+
+                  <label for="birthMonth">Mes</label>
+
+                  <!-- JavaScript agregará las opciones de los meses -->
+                  <select id="birthMonth" required>
+                    <option value="">Mes</option>
+                  </select>
+                </div>
+
+                <!-- Campo para seleccionar el día -->
+                <div class="field">
+
+                  <label for="birthDay">Día</label>
+
+                  <!-- JavaScript agregará los días correspondientes al mes -->
+                  <select id="birthDay" required>
+                    <option value="">Día</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Aquí aparecerán los mensajes de error -->
+            <!-- aria-live permite que lectores de pantalla detecten cambios -->
+            <p
+              id="ageError"
+              class="message error-message"
+              role="alert"
+              aria-live="polite"
+            ></p>
+
+            <!-- Botón que envía el formulario y ejecuta el cálculo -->
+            <button
+              class="btn btn-primary btn-block"
+              type="submit"
+            >
+              Calcular edad
+            </button>
+          </form>
+
+          <!-- Panel donde se mostrará la edad calculada -->
+          <!-- hidden mantiene el panel oculto al cargar la página -->
+          <div
+            id="ageResult"
+            class="result-panel"
+            aria-live="polite"
+            hidden
+          >
+            <span class="result-label">Resultado</span>
+
+            <!-- JavaScript insertará aquí los años y meses -->
+            <strong id="ageResultText"></strong>
+
+            <!-- Aquí se puede mostrar información adicional -->
+            <small id="ageExtraText"></small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- PROYECTO 2: CONVERTIDOR DE TEMPERATURA                -->
+    <!-- ===================================================== -->
+
+    <section
+      id="temperatura"
+      class="section tool-section alternate-section"
+    >
+      <div class="container tool-layout">
+
+        <!-- Encabezado de la sección -->
+        <div class="section-heading">
+
+          <span class="eyebrow">Proyecto de clase No. 2</span>
+
+          <h2>Convertidor de temperatura</h2>
+
+          <p>
+            Ingresa un valor y selecciona las unidades que deseas convertir.
+          </p>
+        </div>
+
+        <!-- Tarjeta del convertidor -->
+        <div class="tool-card">
+
+          <!-- Formulario para realizar la conversión -->
+          <form id="temperatureForm" novalidate>
+
+            <!-- Contenedor de los tres campos -->
+            <div class="temperature-grid">
+
+              <!-- Campo para ingresar la temperatura -->
+              <div class="field">
+
+                <label for="temperatureValue">Valor</label>
+
+                <!--
+                  type="number" permite ingresar valores numéricos.
+                  step="any" permite usar números decimales.
+                -->
+                <input
+                  id="temperatureValue"
+                  type="number"
+                  step="any"
+                  placeholder="Ej. 34"
+                  required
+                />
+              </div>
+
+              <!-- Campo para elegir la unidad inicial -->
+              <div class="field">
+
+                <label for="fromUnit">Unidad de origen</label>
+
+                <select id="fromUnit" required>
+
+                  <!-- Opción inicial sin valor -->
+                  <option value="">Selecciona</option>
+
+                  <!-- Los valores se utilizarán desde JavaScript -->
+                  <option value="celsius">Celsius</option>
+                  <option value="fahrenheit">Fahrenheit</option>
+                  <option value="kelvin">Kelvin</option>
+                </select>
+              </div>
+
+              <!-- Campo para elegir la unidad final -->
+              <div class="field">
+
+                <label for="toUnit">Unidad de destino</label>
+
+                <select id="toUnit" required>
+                  <option value="">Selecciona</option>
+                  <option value="celsius">Celsius</option>
+                  <option value="fahrenheit">Fahrenheit</option>
+                  <option value="kelvin">Kelvin</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Aquí aparecerán los errores de la conversión -->
+            <p
+              id="temperatureError"
+              class="message error-message"
+              role="alert"
+              aria-live="polite"
+            ></p>
+
+            <!--
+              El botón inicia deshabilitado.
+              JavaScript lo habilita cuando todos los campos son válidos.
+            -->
+            <button
+              id="convertButton"
+              class="btn btn-primary btn-block"
+              type="submit"
+              disabled
+            >
+              Convertir
+            </button>
+          </form>
+
+          <!-- Panel donde aparecerá el resultado de la conversión -->
+          <div
+            id="temperatureResult"
+            class="result-panel"
+            aria-live="polite"
+            hidden
+          >
+            <span class="result-label">Resultado</span>
+
+            <!-- JavaScript colocará aquí la temperatura convertida -->
+            <strong id="temperatureResultText"></strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- PROYECTO 3: GESTOR DE TAREAS                          -->
+    <!-- ===================================================== -->
+
+    <section id="tareas" class="section tool-section">
+
+      <div class="container tool-layout">
+
+        <!-- Encabezado de la sección -->
+        <div class="section-heading">
+
+          <span class="eyebrow">Proyecto de clase No. 3</span>
+
+          <h2>Gestor de actividades</h2>
+
+          <p>
+            Agrega tus tareas y marca las que ya hayas terminado.
+          </p>
+        </div>
+
+        <!-- Tarjeta del gestor de tareas -->
+        <div class="tool-card">
+
+          <!-- Formulario para agregar una nueva tarea -->
+          <form id="taskForm" class="task-form">
+
+            <!-- Campo que ocupa el espacio disponible -->
+            <div class="field grow">
+
+              <label for="taskInput">Nueva tarea</label>
+
+              <!--
+                maxlength limita la tarea a 120 caracteres.
+                autocomplete="off" evita sugerencias anteriores.
+              -->
+              <input
+                id="taskInput"
+                type="text"
+                maxlength="120"
+                placeholder="Escribe una actividad"
+                autocomplete="off"
+                required
+              />
+            </div>
+
+            <!-- Botón para agregar la tarea -->
+            <button
+              class="btn btn-primary task-add-button"
+              type="submit"
+            >
+              Agregar
+            </button>
+          </form>
+
+          <!-- Resumen de tareas pendientes y completadas -->
+          <div class="task-summary">
+
+            <!-- JavaScript actualizará la cantidad de pendientes -->
+            <span>
+              <strong id="pendingCount">0</strong> pendientes
+            </span>
+
+            <!-- JavaScript actualizará la cantidad de completadas -->
+            <span>
+              <strong id="completedCount">0</strong> completadas
+            </span>
+          </div>
+
+          <!-- Aquí se mostrarán mensajes de error -->
+          <p
+            id="taskMessage"
+            class="message error-message"
+            role="alert"
+            aria-live="polite"
+          ></p>
+
+          <!--
+            Lista vacía donde JavaScript agregará 
+            cada una de las tareas.
+          -->
+          <ul
+            id="taskList"
+            class="task-list"
+            aria-live="polite"
+          ></ul>
+
+          <!--
+            Mensaje que aparece cuando todavía no existen tareas.
+            JavaScript puede ocultarlo cuando se agrega una actividad.
+          -->
+          <div id="emptyTasks" class="empty-state">
+
+            <!-- Ícono del estado vacío -->
+            <span>✓</span>
+
+            <h3>No hay tareas registradas</h3>
+
+            <p>Agrega tu primera actividad para comenzar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+
+    <div class="container">
+
+      <!-- Nombre de la práctica -->
+      <p>Práctica de laboratorio DWI</p>
+
+      <!-- Nombre de la estudiante -->
+      <p>
+        <strong>Fernanda Guadalupe Salazar Sánchez</strong>
+      </p>
+    </div>
+  </footer>
+
+  <!--
+    Enlaza el archivo JavaScript principal.
+
+    Se coloca al final del body para asegurar que el contenido HTML
+    ya se encuentre cargado antes de ejecutar el código JavaScript.
+  -->
+  <script src="js/app.js"></script>
+</body>
+</html>
